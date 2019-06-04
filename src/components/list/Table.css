@@ -1,8 +1,10 @@
 .table-container {
-  /* border: 1px solid #fff; */
+  margin: 5px;
 }
 .table {
-  /* border: 1px solid #fff; */
+  width: 100%;
+  border-spacing: 0;
+  border-collapse: collapse;
 }
 
 .table-head tr th {
@@ -11,6 +13,7 @@
   text-align: left;
   font-size: 16px;
   font-weight: 400;
+  text-align: left;
 }
 
 .table-body {
@@ -21,9 +24,16 @@
   border-bottom: 2px solid #0c2033;
   cursor: pointer;
 }
+
+.table-rank {
+  color: #9cb3c9;
+}
 .table-dollar {
   color: #9cb3c9;
   /* margin-right: 6px; */
+}
+.table-market {
+  color: #9cb3c9;
 }
 .percent-raised {
   color: #3cd483;
