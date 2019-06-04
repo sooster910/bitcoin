@@ -1,0 +1,34 @@
+.table-container {
+  /* border: 1px solid #fff; */
+}
+.table {
+  /* border: 1px solid #fff; */
+}
+
+.table-head tr th {
+  padding: 10px 20px;
+  color: #9cb3c9;
+  text-align: left;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.table-body {
+  background-color: #0f273d;
+}
+.table-body tr td {
+  padding: 24px 20px;
+  border-bottom: 2px solid #0c2033;
+  cursor: pointer;
+}
+.table-dollar {
+  color: #9cb3c9;
+  /* margin-right: 6px; */
+}
+.percent-raised {
+  color: #3cd483;
+}
+
+.percent-fallen {
+  color: #d64d96;
+}
