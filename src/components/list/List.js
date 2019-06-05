@@ -3,6 +3,7 @@ import ListItem from "./ListItem";
 import Pagination from "./Pagination";
 import { handleResponse } from "../../helpers";
 import Loading from "../common/Loading";
+import { API_URL } from "../../config";
 
 class List extends React.Component {
   constructor() {
@@ -29,9 +30,7 @@ class List extends React.Component {
     });
 
     const { page } = this.state;
-    fetch(
-      `https://api.udilia.com/coins/v1/cryptocurrencies?page=${page}&perPage=20`
-    )
+    fetch(`${API_URL}/cryptocurrencies?page=${page}&perPage=20`)
       .then(handleResponse)
       .then(data => {
         console.log(data);
@@ -52,15 +51,6 @@ class List extends React.Component {
         });
         console.log("Error", error);
       });
-  }
-  renderChangePercent(percent) {
-    if (percent > 0) {
-      return <span className="percent-raised">{percent}% &uarr;</span>;
-    } else if (percent < 0) {
-      return <span className="percent-fallen">{percent}% &darr;</span>;
-    } else {
-      return <span>{percent}</span>;
-    }
   }
 
   handlePaginationClick(direction) {
@@ -90,7 +80,7 @@ class List extends React.Component {
       <div>
         <ListItem
           currencies={this.state.currencies}
-          renderChangePercent={this.renderChangePercent}
+          // renderChangePercent={this.renderChangePercent}
         />
         <Pagination
           handlePaginationClick={this.handlePaginationClick}

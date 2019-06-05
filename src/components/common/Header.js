@@ -1,18 +1,21 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import Search from "./Search";
 import "./Header.css";
 
 function Header() {
   const title = "bitcoin";
   return (
     <header>
-      <a className="header-logo" href="#">
+      <Link to="/" className="header-logo">
         <img
-          src="image/bitcoin_logo.png"
+          src="/image/bitcoin_logo.png"
           alt="bitcoin_logo"
           className="bitcoin-logo"
         />
         <div className="header-title">{title}</div>
-      </a>
+      </Link>
+      <Search />
     </header>
   );
 }

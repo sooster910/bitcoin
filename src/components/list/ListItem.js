@@ -1,6 +1,7 @@
 import React from "react";
 import "./Table.css";
 import { withRouter } from "react-router-dom";
+import { renderChangePercent } from "../../helpers";
 const ListItem = props => {
   return (
     <div className="table-container">
@@ -30,7 +31,7 @@ const ListItem = props => {
                 <span className="table-market">$</span>
                 {currency.marketCap}
               </td>
-              <td>{props.renderChangePercent(currency.percentChange24h)}</td>
+              <td>{renderChangePercent(currency.percentChange24h)}</td>
             </tr>
           ))}
         </tbody>
