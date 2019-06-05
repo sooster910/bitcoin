@@ -1,4 +1,5 @@
 import React from "react";
+import Loading from "../common/Loading";
 import { API_URL } from "../../config";
 import { handleResponse } from "../../helpers";
 import "./search.css";
@@ -20,10 +21,13 @@ class Search extends React.Component {
     this.setState(() => ({
       searchTerm
     }));
+
     //If searchQuery isn't present, don't send request to server
     if (!searchTerm) {
       return "";
     }
+
+    this.setState(() => ({ loading: true }));
 
     fetch(`${API_URL}/autocomplete?searchQuery=${searchTerm}`)
       .then({ handleResponse })
@@ -53,6 +57,11 @@ class Search extends React.Component {
           placeholder="Currency name"
           onChange={this.handleChange}
         />
+        {this.state.loading && (
+          <div className="search-loading">
+            <Loading width="12px" height="12px" />
+          </div>
+        )}
       </div>
     );
   }

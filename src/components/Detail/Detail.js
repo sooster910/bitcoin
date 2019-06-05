@@ -1,6 +1,7 @@
 import React from "react";
 import { API_URL } from "../../config";
 import { handleResponse, renderChangePercent } from "../../helpers";
+import { Link } from "react-router-dom";
 
 import Loading from "../common/Loading";
 import "./detail.css";
@@ -55,9 +56,15 @@ class Detail extends React.Component {
     }
     return (
       <div className="detail">
-        <h1 className="detail-heading">
-          {this.state.currency.name}({this.state.currency.symbol})
-        </h1>
+        <div className="detail-heading-container">
+          <Link to="/" className="back-page">
+            <ion-icon name="arrow-round-back" />
+          </Link>
+
+          <h1 className="detail-heading">
+            {this.state.currency.name}({this.state.currency.symbol})
+          </h1>
+        </div>
         <div className="detail-container">
           <div className="detail-item">
             Price{" "}
