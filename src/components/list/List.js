@@ -1,5 +1,6 @@
 import React from "react";
 import ListItem from "./ListItem";
+import Pagination from "./Pagination";
 import { handleResponse } from "../../helpers";
 import Loading from "../common/Loading";
 
@@ -9,23 +10,36 @@ class List extends React.Component {
     this.state = {
       loading: false,
       currencies: [],
-      error: null
+      error: null,
+      totalPages: 0,
+      page: 1
     };
+    this.handlePaginationClick = this.handlePaginationClick.bind(this);
   }
 
   componentDidMount() {
+    this.fetchCurrencies();
+  }
+
+  fetchCurrencies() {
     this.setState(() => {
       return {
         loading: true
       };
     });
-    fetch("https://api.udilia.com/coins/v1/cryptocurrencies?page=1&perPage=20")
+
+    const { page } = this.state;
+    fetch(
+      `https://api.udilia.com/coins/v1/cryptocurrencies?page=${page}&perPage=20`
+    )
       .then(handleResponse)
       .then(data => {
+        console.log(data);
         this.setState(() => {
           return {
             currencies: data.currencies,
-            loading: false
+            loading: false,
+            totalPages: data.totalPages
           };
         });
       })
@@ -39,7 +53,6 @@ class List extends React.Component {
         console.log("Error", error);
       });
   }
-
   renderChangePercent(percent) {
     if (percent > 0) {
       return <span className="percent-raised">{percent}% &uarr;</span>;
@@ -49,8 +62,21 @@ class List extends React.Component {
       return <span>{percent}</span>;
     }
   }
+
+  handlePaginationClick(direction) {
+    let nextPage = this.state.page;
+    nextPage = direction === "next" ? nextPage + 1 : nextPage - 1;
+
+    //call fetchCurrencies function inside setState's callback
+    //because make sure first page state is updated.
+    this.setState({ page: nextPage }, () => {
+      this.fetchCurrencies();
+    });
+  }
+
   render() {
     // console.log("this.state", this.state);
+
     //render only loading component, if loading state is set to true
     if (this.state.loading) {
       return <Loading />;
@@ -61,10 +87,17 @@ class List extends React.Component {
       return <div className="error">{this.state.error}</div>;
     }
     return (
-      <ListItem
-        currencies={this.state.currencies}
-        renderChangePercent={this.renderChangePercent}
-      />
+      <div>
+        <ListItem
+          currencies={this.state.currencies}
+          renderChangePercent={this.renderChangePercent}
+        />
+        <Pagination
+          handlePaginationClick={this.handlePaginationClick}
+          page={this.state.page}
+          totalPages={this.state.totalPages}
+        />
+      </div>
     );
   }
 }
