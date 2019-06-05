@@ -1,6 +1,6 @@
 import React from "react";
 import "./Table.css";
-
+import { withRouter } from "react-router-dom";
 const ListItem = props => {
   return (
     <div className="table-container">
@@ -16,7 +16,10 @@ const ListItem = props => {
         </thead>
         <tbody className="table-body">
           {props.currencies.map(currency => (
-            <tr key={currency.id}>
+            <tr
+              key={currency.id}
+              onClick={() => props.history.push(`/currency/${currency.id}`)}
+            >
               <td className="table-rank">{currency.rank}</td>
               <td>{currency.name}</td>
               <td>
@@ -36,4 +39,4 @@ const ListItem = props => {
   );
 };
 
-export default ListItem;
+export default withRouter(ListItem);
