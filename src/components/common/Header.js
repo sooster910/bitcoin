@@ -4,7 +4,7 @@ import Search from "./Search";
 import "./Header.css";
 
 function Header() {
-  const title = "bitcoin";
+  const title = "CoinTracker";
   return (
     <header>
       <Link to="/" className="header-logo">

@@ -7,7 +7,13 @@
   text-align: center;
   border: none;
   border-radius: 16px;
-  background-color: #4997e5;
+  /* background-color: #4997e5; */
+  background-image: linear-gradient(
+    to right,
+    #603cab 0,
+    #f15a91 51%,
+    #603cab 100%
+  );
   transition: background-color 0.2s;
   color: white;
   cursor: pointer;

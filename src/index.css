@@ -3,9 +3,11 @@ body {
   width: 100%;
   height: 100vh;
   font-family: "Poppins", sans-serif;
-  background-color: #0c2033;
+  /* background-color: #0c2033; */
+  /* background-color: #1e124f; */
+  background-color: #100736;
   color: #fff;
-  letter-spacing: 0.5px;
+  letter-spacing: 2px;
   font-size: 16px;
   font-weight: 300;
   -webkit-font-smoothing: antialiased;
@@ -25,3 +27,9 @@ body {
   -ms-transform: translate(-50%, -50%);
   -o-transform: translate(-50%, -50%);
 }
+
+/****************************************************/
+/* media */
+/*Small tablet to big tablet from 768xp to 1023px*/
+/*Small phones to small tablets from 480px to 767px*/
+/* Small phones from 0 to 480px */

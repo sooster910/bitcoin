@@ -8,8 +8,8 @@ const ListItem = props => {
       <table className="table">
         <thead className="table-head">
           <tr>
-            <th>Ranking</th>
-            <th>Cryptocurrency</th>
+            <th>Rank</th>
+            <th>Crypto currency</th>
             <th>Price</th>
             <th>Market Cap</th>
             <th>24Hr Change</th>
@@ -18,6 +18,7 @@ const ListItem = props => {
         <tbody className="table-body">
           {props.currencies.map(currency => (
             <tr
+              className="table-body-row"
               key={currency.id}
               onClick={() => props.history.push(`/currency/${currency.id}`)}
             >

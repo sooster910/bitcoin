@@ -3,10 +3,21 @@ header {
   flex-direction: row;
   align-items: center;
   justify-content: left;
-  background-color: #0f273d;
-  width: 100%;
+  /*background-color: #100736; */
+  background-color: #1e124f;
+  /* background-color: #0f273d; */
+  max-width: 100%;
   height: 80px;
   color: white;
+  padding: 30px;
+  /* font-family: "IBM Plex Sans Condensed", sans-serif; */
+  font-weight: 600;
+}
+@media only screen and (max-width: 480px) {
+  header {
+    padding: 10px;
+    flex-direction: column;
+  }
 }
 
 header .header-logo {
@@ -19,10 +30,25 @@ header .header-logo .bitcoin-logo {
   width: 40px;
   height: 40px;
 }
+@media only screen and (max-width: 480px) {
+  header .header-logo .bitcoin-logo {
+    width: 20px;
+    height: 20px;
+  }
+}
+
 header .header-title {
   margin-left: 5px;
   display: inline-block;
   color: white;
   font-size: 30px;
-  text-transform: uppercase;
+  letter-spacing: 2px;
+
+  /* text-transform: uppercase; */
+}
+
+@media only screen and (max-width: 480px) {
+  header .header-title {
+    font-size: 20px;
+  }
 }

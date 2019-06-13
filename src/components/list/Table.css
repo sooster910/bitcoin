@@ -1,5 +1,6 @@
 .table-container {
-  margin: 5px;
+  max-width: 1140px;
+  margin: 0 auto;
 }
 .table {
   width: 100%;
@@ -9,20 +10,51 @@
 
 .table-head tr th {
   padding: 10px 20px;
+
   color: #9cb3c9;
   text-align: left;
   font-size: 16px;
   font-weight: 400;
   text-align: left;
 }
+@media only screen and (max-width: 767px) {
+  .table-head tr th {
+    font-size: 12px;
+    padding: 4px 8px;
+  }
+}
 
 .table-body {
-  background-color: #0f273d;
+  /* background-color: #0f273d; */
+  background-image: linear-gradient(to right, #361e6c, #1e124f);
 }
+
+@media only screen and (max-width: 767px) {
+  .table-body {
+    font-size: 12px;
+  }
+}
+.table-body td {
+  transition: transform 200ms ease-in;
+  -webkit-transition: transform 200ms ease-in;
+  -moz-transition: transform 200ms ease-in;
+  -ms-transition: transform 200ms ease-in;
+  -o-transition: transform 200ms ease-in;
+}
+.table-body-row:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
 .table-body tr td {
   padding: 24px 20px;
-  border-bottom: 2px solid #0c2033;
+  /* border-bottom: 2px solid #0c2033; */
+  border-bottom: 2px solid#403960;
   cursor: pointer;
+}
+@media only screen and (max-width: 767px) {
+  .table-body tr td {
+    padding: 15px 5px;
+  }
 }
 
 .table-rank {

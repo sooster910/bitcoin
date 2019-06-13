@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 import Loading from "../common/Loading";
 import "./detail.css";
+import { newExpression } from "@babel/types";
 
 class Detail extends React.Component {
   constructor() {
@@ -16,8 +17,24 @@ class Detail extends React.Component {
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
+    console.log("didmount");
+
     const currencyId = this.props.match.params.id;
+    this.fetchCurrency(currencyId);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    console.log("didupdate");
+    if (this.props.location.pathname !== nextProps.location.pathname) {
+      console.log("if state working", this.props.location.pathname);
+      const newCurrencyId = nextProps.match.params.id;
+
+      this.fetchCurrency(newCurrencyId);
+    }
+  }
+
+  fetchCurrency(currencyId) {
     fetch(`${API_URL}/cryptocurrencies/${currencyId}`)
       .then(handleResponse)
       .then(currency => {
